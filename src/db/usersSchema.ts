@@ -1,4 +1,5 @@
 import { integer, pgTable, text, varchar  } from "drizzle-orm/pg-core";
+import { createInsertSchema } from "drizzle-zod";
 
 
 export const usersTable = pgTable('users',{
@@ -9,4 +10,14 @@ export const usersTable = pgTable('users',{
 
     name: varchar({length: 255}),
     address: text(),
+})
+
+export const createUsersSchema = createInsertSchema(usersTable).omit({
+    id: true,
+    role: true,
+})
+
+export const loginSchema = createInsertSchema(usersTable).pick({
+    email: true,
+    password: true,
 })
