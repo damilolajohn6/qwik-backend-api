@@ -1,9 +1,9 @@
 import { Request, Response } from "express";
-import { db } from "../../db/index";
+import { db } from "../../db/index.js";
 import { eq } from "drizzle-orm";
 import _ from "lodash";
 
-import { createBlogSchema, blogTable } from "../../db/blogsSchema";
+import { createBlogSchema, blogTable } from "../../db/blogsSchema.js";
 
 export async function getBlogs(req: Request, res: Response) {
   try {

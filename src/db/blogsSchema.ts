@@ -11,9 +11,13 @@ export const blogTable = pgTable("blogs", {
 });
 
 export const createBlogSchema = createInsertSchema(blogTable).omit({
-    id: true,
+  // @ts-ignore
+  id: true,
 });
 
-export const updateBlogSchema = createInsertSchema(blogTable).omit({
+export const updateBlogSchema = createInsertSchema(blogTable)
+  .omit({
+    // @ts-ignore
     id: true,
-  }).partial();
+  })
+  .partial();

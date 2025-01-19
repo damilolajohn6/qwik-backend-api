@@ -5,25 +5,42 @@ import {
   createBlog,
   updateBlog,
   deleteBlog,
-} from "./blogsController";
-import { validateData } from "../../middlewares/validationmiddlewares";
-import { createBlogSchema, updateBlogSchema } from "../../db/blogsSchema";
-import { verifyToken, verifyAdmin } from "../../middlewares/authmiddleware";
+  getBlogById,
+} from "./blogsController.js";
+import { validateData } from "../../middlewares/validationmiddlewares.js";
+import { createBlogSchema, updateBlogSchema } from "../../db/blogsSchema.js";
+import { verifyToken, verifyAdmin } from "../../middlewares/authmiddleware.js";
 
 const router = Router();
 
 router.get("/", getBlogs);
 
+router.get("/", getBlogById);
+
 router.post(
   "/",
+  // @ts-ignore
   verifyToken,
   verifyAdmin,
   validateData(createBlogSchema),
   createBlog
 );
 
-router.put("/:id", validateData(updateBlogSchema), updateBlog);
+router.put(
+  "/:id",
+  // @ts-ignore
+  verifyToken,
+  verifyAdmin,
+  validateData(updateBlogSchema),
+  updateBlog
+);
 
-router.delete("/:id", deleteBlog);
+router.delete(
+  "/:id",
+  // @ts-ignore
+  verifyToken,
+  verifyAdmin,
+  deleteBlog
+);
 
 export default router;
