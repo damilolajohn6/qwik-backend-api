@@ -12,7 +12,7 @@
     "db:studio": "drizzle-kit studio"
   },
   "keywords": [],
-  "author": "",
+  "author": "damilolajohn6",
   "license": "ISC",
   "description": "",
   "dependencies": {
@@ -23,6 +23,7 @@
     "jsonwebtoken": "^9.0.2",
     "lodash": "^4.17.21",
     "pg": "^8.13.1",
+    "serverless-http": "^3.2.0",
     "zod": "^3.24.1"
   },
   "devDependencies": {

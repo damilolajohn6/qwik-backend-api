@@ -1,0 +1,15 @@
+name: qwik-admin-api
+region: us-east-1
+yamlVersion: 2
+backend:
+  path: ./
+  language:
+    name: js
+    packageManager: npm
+  scripts:
+    deploy: npm install && npm run build
+  functions:
+    - name: qwik-admin-express-api-function
+      path: ./
+      handler: handler
+      entry: dist/src/index.js
