@@ -15,6 +15,20 @@
       "when": 1737107927108,
       "tag": "0001_past_kingpin",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1737169425800,
+      "tag": "0002_dapper_queen_noir",
+      "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "7",
+      "when": 1737297159065,
+      "tag": "0003_lying_kat_farrell",
+      "breakpoints": true
     }
   ]
 }

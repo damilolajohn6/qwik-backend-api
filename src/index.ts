@@ -1,5 +1,7 @@
 import express, { json, urlencoded} from "express"
 import productRoutes from "./routes/products/index"
+import authRoutes from "./routes/auth/index"
+import blogRoutes from "./routes/blogs/index"
 
 const port = 3000
 
@@ -14,6 +16,8 @@ app.get("/", (req, res) => {
 })
 
 app.use("/products", productRoutes)
+app.use("/auth", authRoutes)
+app.use("/blogs", blogRoutes)
 
 app.listen(port, () => {
   console.log(`Server is running on http://localhost:${port}`)
