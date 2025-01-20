@@ -5,12 +5,13 @@ import { orderItemsTable, ordersTable } from "../../db/orderSchema.js";
 import paystack from "paystack-api";
 import crypto from "crypto";
 
-const PAYSTACK_PUBLIC_KEY = process.env.PAYSTACK_PUBLIC_KEY || "";
-const PAYSTACK_SECRET_KEY = process.env.PAYSTACK_SECRET_KEY || "";
+const PAYSTACK_PUBLIC_KEY = process.env.PAYSTACK_PUBLIC_KEY;
+const PAYSTACK_SECRET_KEY = process.env.PAYSTACK_SECRET_KEY;
 
-if (!PAYSTACK_SECRET_KEY) {
-  throw new Error("PAYSTACK_SECRET_KEY is not defined");
-}
+// if (!PAYSTACK_SECRET_KEY) {
+//   throw new Error("PAYSTACK_SECRET_KEY is not defined");
+// }
+//@ts-ignore
 const paystackClient = paystack(PAYSTACK_SECRET_KEY);
 
 export async function getKeys(req: Request, res: Response) {
@@ -80,7 +81,7 @@ export async function webhook(req: Request, res: Response) {
     const rawBody = req.body;
     const paystackSignature = req.headers["x-paystack-signature"];
 
-    if (!verifyWebhookSignature(rawBody, paystackSignature, PAYSTACK_SECRET_KEY)) {
+    if (!PAYSTACK_SECRET_KEY || !verifyWebhookSignature(rawBody, paystackSignature, PAYSTACK_SECRET_KEY)) {
       return res.status(400).json({ error: "Invalid signature" });
     }
 
