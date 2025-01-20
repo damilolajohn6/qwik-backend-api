@@ -5,6 +5,7 @@ declare global {
         export interface Request {
             userId?: Number;
             cleanBody?: any;
+            rawBody?: any;
             role: string;
         }
     }
