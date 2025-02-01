@@ -15,7 +15,7 @@ const router = Router();
 
 router.get("/", getBlogs);
 
-router.get("/", getBlogById);
+router.get("/:id", getBlogById);
 
 router.post(
   "/",

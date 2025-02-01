@@ -23,7 +23,7 @@ export async function getBlogById(req: Request, res: Response) {
       .where(eq(blogTable.id, Number(id)));
 
     if (!blog) {
-      res.status(404).send({ message: "Blog not found" });
+      res.status(404).send({ message: "blog not found" });
     } else {
       res.json(blog);
     }
@@ -31,6 +31,7 @@ export async function getBlogById(req: Request, res: Response) {
     res.status(500).send(error);
   }
 }
+
 
 export async function createBlog(req: Request, res: Response) {
   try {
